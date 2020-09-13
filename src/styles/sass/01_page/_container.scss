@@ -1,0 +1,55 @@
+@import "../00_base/_extends.scss";
+@import "../00_base/_mixins.scss";
+@import "../00_base/_functions.scss";
+@import "../00_base/_colors.scss";
+
+.container-meli {
+  @extend %display-grid;
+  @include grid-columns(1fr);
+  @include grid-rows(56px auto auto auto);
+  grid-column-gap: 2px;
+  height: auto;
+  grid-template-areas:
+    "search-box"
+    "bread-crumbs"
+    "product-info-container"
+    "footer";
+  background-color: $meli-gray-100;
+}
+
+// .item {
+//   background-color: violet;
+//   border: 1px solid blue;
+// }
+
+.search-box {
+  @include set-grid-area(search-box);
+  text-align: center;
+//   border: 1px solid blue;
+  padding: 6px;
+  background-color: $meli-yellow-color;
+}
+
+.bread-crumbs {
+  @include set-grid-area(bread-crumbs);
+  text-align: left;
+  border: 1px solid blue;
+}
+
+.product-info-container {
+  @include set-grid-area(product-info-container);
+  text-align: center;
+  border: 1px solid blue;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.footer {
+  @include set-grid-area(footer);
+  text-align: center;
+  border: 1px solid blue;
+}
+
+.padding-6 {
+    padding: 6px;
+} 

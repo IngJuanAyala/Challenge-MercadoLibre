@@ -1,0 +1,9 @@
+
+/*Used to repeat the parameter $str the number of times received in the variable $times*/
+@function repeat-str($str, $times) {
+    @if $times > 0 {
+        @return $str + repeat-str($str, $times - 1);
+    }
+
+    @return "";
+}

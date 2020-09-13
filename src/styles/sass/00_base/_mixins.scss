@@ -1,0 +1,118 @@
+//Specify the different properties to set to titles with opcional parameters
+@mixin title-personalization($color: null, $font-size: null, $font-family: null, $font-weight: null, $font-style: null, $text-align: null) {
+
+    @if $color != null {
+        color: $color;
+    }
+
+    @if $font-size != null {
+        font-size: $font-size;
+    }
+
+    @if $font-family != null {
+        font-family: $font-family;
+    }
+
+    @if $font-weight != null {
+        font-weight: $font-weight;
+    }
+
+    @if $font-style != null {
+        font-style: $font-style;
+    }
+
+    @if $text-align != null {
+        text-align: $text-align;
+    }
+}
+
+
+/// Get and assign the information about the columns and the columns gap
+@mixin grid-columns($columns, $gap: null) {
+    grid-template-columns: $columns;
+
+    @if $gap != null {
+        grid-column-gap: $gap;
+    }
+}
+
+/// Get and assign the information about the rows and the rows gap
+@mixin grid-rows($rows, $gap: null) {
+    grid-template-rows: $rows;
+
+    @if $gap != null {
+        grid-row-gap: $gap;
+    }
+}
+
+@mixin set-grid-area ($grid-area: null, $align-self: null, $justify-self: null) {
+    @if $grid-area != null {
+        grid-area: $grid-area;
+    }
+
+    @if $align-self != null {
+        align-self: $align-self;
+    }
+
+    @if $justify-self != null {
+        justify-self: $justify-self;
+    }
+}
+
+
+//Mixin screen types
+@mixin respond-to($media) {
+  @if $media == largeDesktop {
+    @media only screen and (min-width: $large-desktop) {
+      @content
+    }
+  }
+
+  @if $media == smallDesktop {
+    @media only screen and (max-width: $small-desktop) {
+      @content;
+    }
+  }
+
+  @if $media == handhelds {
+    @media only screen and (min-width: 600px) and (max-width: $handheld) {
+      @content;
+    }
+  }
+
+  @if $media == handhelds-landscape {
+    @media only screen and (min-device-width : $handheld) and (max-device-width : $handhelds-landscape) and (orientation : landscape) {
+      @content;
+    }
+  }
+
+  @if $media == mobile {
+    @media only screen and (max-width: $mobile) {
+      @content;
+    }
+  }
+
+  @if $media == mobile-portrait {
+    @media only screen and (min-width: 320px) and (max-width: $mobile) and (orientation : portrait) {
+      @content;
+    }
+  }
+
+  @if $media == mobile-landscape {
+    @media only screen and (min-width: 320px) and (max-width: $mobile-landscape) and (orientation : landscape) {
+      @content;
+    }
+  }
+
+  @if $media == retina {
+    @media (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+
+  @if $media == iphone5 {
+    @media only screen and (device-aspect-ratio: 40/71) {
+      @content
+    }
+  }
+}

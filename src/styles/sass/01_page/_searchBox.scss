@@ -1,0 +1,98 @@
+@import "../00_base/_extends.scss";
+@import "../00_base/_mixins.scss";
+@import "../00_base/_colors.scss";
+@import "../00_base/_root.scss";
+
+.container-searchBox {
+    @extend %display-grid;
+    @include grid-columns(5% 100px 75% 40px 10%);
+    @include grid-rows(1fr);
+    // grid-column-gap: 1px;
+    height: auto;
+    grid-template-areas:
+    ". logoMeli SearchBar btnSearch .";
+    background-color: $meli-yellow-color;
+
+}
+
+// .item {
+//    border: 1px solid blue;
+// }
+
+.logoMeli {
+    @include set-grid-area(logoMeli); 
+    text-align: center;
+    // border: 1px solid blue;
+    align-self: center;
+}
+
+.SearchBar {
+    @include set-grid-area(SearchBar); 
+    text-align: center;
+    // border: 1px solid blue;
+    background-color: #fff;
+
+}
+
+.btnSearch {
+    @include set-grid-area(btnSearch); 
+    text-align: center;
+    // border: 1px solid blue;
+    padding-top: 0.7em;
+    background-color: $meli-gray-100;
+
+}
+
+.input-search {
+    padding: 1%;
+    display: block;
+    border: none;
+    width: 98%;
+}
+
+@include respond-to(mobile-portrait) {
+    .container-searchBox {
+      grid-template-columns: 0% auto 60% auto 0%;
+    }
+
+    .input-search{
+        height: 90%
+    }
+}
+
+@include respond-to(mobile-landscape) {
+    .input-search{
+        height: 80%
+    }
+}
+
+@include respond-to(handhelds) {
+    .input-search{
+        height: 80%
+    }
+}
+
+@include respond-to(handhelds-landscape) {
+    .input-search{
+        height: 60%
+    }
+}
+
+@include respond-to(smallDesktop) {
+    .input-search{
+        height: 75%
+    }
+}
+
+@include respond-to(smallDesktop) {
+    .largeDesktop{
+        height: 75%
+    }
+}
+
+
+
+
+
+
+  

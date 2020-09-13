@@ -1,0 +1,77 @@
+@import "../00_base/_extends.scss";
+@import "../00_base/_mixins.scss";
+@import "../00_base/_colors.scss";
+@import "../00_base/_root.scss";
+
+.container-prods-list {
+  @extend %display-grid;
+  @include grid-columns(20% 60% 20%);
+  @include grid-rows(1fr);
+  grid-column-gap: 2px;
+  height: 26%;
+  grid-template-areas: "prod-lt-img prod-lt-descr prod-lt-loc";
+  background-color: #fff;
+  padding: 16px;
+  height: 12em;
+  border-bottom: 1px solid blue;
+}
+
+.prod-lt-img {
+  @include set-grid-area(prod-lt-img);
+  text-align: center;
+  border: 1px solid blue;
+}
+
+.prod-lt-descr {
+  @include set-grid-area(prod-lt-descr);
+  text-align: center;
+  border: 1px solid blue;
+}
+
+.prod-lt-descr-wrapper {
+  @extend %display-grid;
+  @include grid-columns(1fr);
+  @include grid-rows(20% 32px 20%);
+  grid-column-gap: 2px;
+  height: 26%;
+  grid-template-areas: "prod-price"
+                       "."
+                       "prod-name";
+  background-color: #fff;
+  height: 10em;
+  padding-left: 16px;
+}
+
+.prod-price {
+  @include set-grid-area(prod-price);
+  text-align: left;
+  border: 1px solid blue;
+}
+
+.prod-name {
+  @include set-grid-area(prod-name);
+  text-align: left;
+  border: 1px solid blue;
+}
+
+.prod-lt-loc {
+  @include set-grid-area(prod-lt-loc);
+  text-align: center;
+  border: 1px solid blue;
+}
+
+@include respond-to(mobile-portrait) {
+    .container-prods-list {
+      @include grid-columns(1fr);
+      @include grid-rows(50% 34% 16%);
+        grid-template-areas: "prod-lt-img" 
+                            "prod-lt-descr" 
+                            "prod-lt-loc";
+    }
+
+    .prod-lt-descr-wrapper{
+      padding-left: 0px;
+    }
+
+  }
+  

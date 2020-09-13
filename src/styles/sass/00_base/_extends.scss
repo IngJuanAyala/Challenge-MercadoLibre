@@ -1,0 +1,10 @@
+// %generalTitle {
+//     border: 1px solid $color-red;
+//     text-align: center;
+// }
+
+/*mixin to set the display propertie used in css grid*/
+%display-grid {
+    display: -ms-grid;
+    display: grid;
+}
