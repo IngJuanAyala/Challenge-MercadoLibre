@@ -10,8 +10,6 @@ function productsApi(app) {
   //Get product by parameter
   router.get("/items", async function (req, res, next) {
     try {
-
-      console.log('1');
       //Get products by query param
       const productsByParam = await productService.getProductsByQuery(
         req.query.q

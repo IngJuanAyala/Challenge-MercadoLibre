@@ -52,7 +52,7 @@ class ProductService {
           lastname: `${config.lastname}`,
         };
 
-        formattedData.categories = categoriesLt.join();
+        formattedData.categories = categoriesLt.join("/");
         formattedData.items = resultItems;
 
         return formattedData;
@@ -63,7 +63,6 @@ class ProductService {
   }
 
   async getProductById(id) {
-
     //Create result variable.
     let formattedData = {};
 
@@ -79,7 +78,7 @@ class ProductService {
         console.log("Error --> " + err);
       });
 
-      //If get result, set information item.
+    //If get result, set information item.
     if (dataItemResult !== null && dataItemResult !== undefined) {
       formattedData.item = {
         id: dataItemResult.id,
@@ -94,7 +93,7 @@ class ProductService {
             ? dataItemResult.pictures[0].secure_url
             : "",
         condition: dataItemResult.condition,
-          free_shipping: dataItemResult.shipping.free_shipping,
+        free_shipping: dataItemResult.shipping.free_shipping,
         sold_quantity: dataItemResult.sold_quantity,
       };
     }
@@ -118,7 +117,7 @@ class ProductService {
         console.log("Error --> " + err);
       });
 
-    //if we haven't error, set description response. 
+    //if we haven't error, set description response.
     formattedData.item.description =
       descrItemResult.error !== undefined
         ? descrItemResult.message

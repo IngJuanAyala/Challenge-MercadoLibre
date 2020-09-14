@@ -6,10 +6,14 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "./bundle.js",
+    publicPath: "/",
   },
   resolve: {
     extensions: [".js", ".jsx"],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -34,13 +38,13 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
-          'style-loader',
+          "style-loader",
           // Translates CSS into CommonJS
-          'css-loader',
+          "css-loader",
           // Compiles Sass to CSS
-          'sass-loader',
-        ]     
-      }
+          "sass-loader",
+        ],
+      },
     ],
   },
   plugins: [
@@ -49,7 +53,7 @@ module.exports = {
       filename: "./index.html",
     }),
     new MiniCssExtractPlugin({
-      filename: "./src/styles/css/estilos.css",
+      filename: "./assets/[name].css",
     }),
   ],
 };
