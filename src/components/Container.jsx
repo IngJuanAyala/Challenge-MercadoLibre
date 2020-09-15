@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchProductsById } from "../redux/actions/productsActions";
+import {
+  fetchProductsById,
+  fetchProductsByParam,
+} from "../redux/actions/productsActions";
 
 import SearchBox from "./SearchBox";
 import ProductDetail from "./ProductDetail";
@@ -8,21 +11,28 @@ import ResultSearch from "./ResultSearch";
 import Loader from "react-loader-spinner";
 
 import "../styles/sass/01_page/_container.scss";
-// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Container = (props) => {
-  const [productDetail, setProductDetail] = useState(false);
-  // const [resultSearch, setResultSearch] = useState(false);
   const { url } = props.match;
-  if (url && url.includes("items")) {
-    //   setProductDetail(true);
+  const { search } = props.location;
+
+
+  if (props.match.params.search !== undefined) {
     useEffect(() => {
-      setProductDetail(true);
       fetchProductsById(props, props.match.params.search);
     }, []);
   }
 
-  debugger;
+  if (url !== "/" && props.match.params.search === undefined) {
+    let searchValue = search.includes("=")
+      ? props.location.search.split("=")
+      : null;
+    useEffect(() => {
+      fetchProductsByParam(props, searchValue[1]);
+    }, []);
+  }
+
+
   return (
     <>
       <section className="container-meli">
@@ -48,10 +58,25 @@ const Container = (props) => {
               />
             </div>
           ) : (
-            <div></div>
+            <div>
+              {props.state.products.items &&
+                props.state.products.items.length > 0 &&
+                props.state.products.items.map((product) => (
+                  <ResultSearch
+                    key={String(product.id)}
+                    id={product.id}
+                    product={product}
+                  />
+                ))}
+
+              {props.state.products.item &&
+                props.state.products.item !== null && (
+                  <ProductDetail product={props.state.products.item} />
+                )}
+            </div>
           )}
         </div>
-        <div className="footer">#footer</div>
+        <div className="footer"></div>
       </section>
     </>
   );

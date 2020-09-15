@@ -22,14 +22,12 @@
 .logoMeli {
     @include set-grid-area(logoMeli); 
     text-align: center;
-    // border: 1px solid blue;
     align-self: center;
 }
 
 .SearchBar {
     @include set-grid-area(SearchBar); 
     text-align: center;
-    // border: 1px solid blue;
     background-color: #fff;
 
 }
@@ -37,7 +35,6 @@
 .btnSearch {
     @include set-grid-area(btnSearch); 
     text-align: center;
-    // border: 1px solid blue;
     padding-top: 0.7em;
     background-color: $meli-gray-100;
 

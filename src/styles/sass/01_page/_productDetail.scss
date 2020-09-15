@@ -7,30 +7,35 @@
 .container-prod-detail {
     @extend %display-grid;
     @include grid-columns(1fr);
-    @include grid-rows(auto 300px);
+    @include grid-rows(auto auto);
     grid-column-gap: 2px;
     height: auto;
     grid-template-areas:
     "image-detail" 
     "detail-descr-prod";
      background-color: $meli-gray-100;
-     border: 1px solid blue;   
 }
 
 .image-detail {
     @include set-grid-area(image-detail); 
     text-align: center;
-    border: 1px solid blue;
     padding: 8px;
     background-color: #FFF;
 }
 .detail-descr-prod {
     @include set-grid-area(detail-descr-prod); 
-    text-align: center;
-    border: 1px solid blue;
-    padding: 8px;
+    text-align: left;
     background-color: #FFF;
+    padding: 20px 48px 32px 32px;
+    color: #949E9F;
 }
+
+.descr-prod-title{
+    font-size: 28px;
+    padding-bottom: 32px;
+    color: black;
+}
+
 .wrapper-image-detail {
     @extend %display-grid;
     @include grid-columns(70% 30%);
@@ -39,28 +44,24 @@
     height: auto;
     grid-template-areas:
     "image-product info-product";  
-     background-color: #a2d9ce;
-     border: 1px solid blue;
 }
 
 .image-product {
     @include set-grid-area(image-product); 
     text-align: center;
-    border: 1px solid blue;
     padding: 8px;
 }
 
 .info-product {
     @include set-grid-area(info-product); 
     text-align: center;
-    border: 1px solid blue;
     padding: 8px;
 }
 
 .wrapper-info-product {
     @extend %display-grid;
     @include grid-columns(1fr);
-    @include grid-rows(32px 55px 16px 45px 32px 40px 32px 40px);
+    @include grid-rows(32px 18px 16px auto 32px 50px 32px 40px);
     grid-column-gap: 2px;
     height: auto;
     grid-template-areas:
@@ -73,39 +74,38 @@
     "."
     "btn-buy";
      background-color: #a9dfbf;
-     border: 1px solid blue;
      padding-right: 32px;
 }
 
 .info-sales {
     @include set-grid-area(info-sales); 
-    text-align: center;
-    border: 1px solid blue;
+    text-align: left;
+    font-size: 14px;
 }
 
 .product-title {
     @include set-grid-area(product-title); 
-    text-align: center;
-    border: 1px solid blue;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .product-total {
     @include set-grid-area(product-total); 
-    text-align: center;
-    border: 1px solid blue;
+    text-align: left;
+    font-size: 46px;
 }
 
 .btn-buy {
     @include set-grid-area(btn-buy); 
     text-align: center;
-    border: 1px solid blue;
 }
 
 @include respond-to(mobile-portrait) {
 
 .wrapper-image-detail {
     @include grid-columns(1fr);
-    @include grid-rows(10em auto); 
+    @include grid-rows(63% auto); 
     grid-template-areas:
     "image-product" 
     "info-product";  
@@ -115,6 +115,7 @@
 .wrapper-info-product{
     padding-right: 0px;
 }
+
 
 }
   

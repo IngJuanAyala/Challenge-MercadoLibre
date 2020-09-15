@@ -13,19 +13,26 @@
   background-color: #fff;
   padding: 16px;
   height: 12em;
-  border-bottom: 1px solid blue;
+  border-bottom: 1px solid $meli-gray-100;
 }
 
 .prod-lt-img {
   @include set-grid-area(prod-lt-img);
   text-align: center;
-  border: 1px solid blue;
+}
+
+.picture-prod {
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  max-height: 180px;
+  max-width: 180px;
+  border-radius: 4px;
 }
 
 .prod-lt-descr {
   @include set-grid-area(prod-lt-descr);
   text-align: center;
-  border: 1px solid blue;
 }
 
 .prod-lt-descr-wrapper {
@@ -34,44 +41,49 @@
   @include grid-rows(20% 32px 20%);
   grid-column-gap: 2px;
   height: 26%;
-  grid-template-areas: "prod-price"
-                       "."
-                       "prod-name";
+  grid-template-areas:
+    "prod-price"
+    "."
+    "prod-name";
   background-color: #fff;
-  height: 10em;
+  height: 8em;
   padding-left: 16px;
+  padding-top: 2%;
 }
 
 .prod-price {
   @include set-grid-area(prod-price);
   text-align: left;
-  border: 1px solid blue;
+  font-size: 24px;
 }
+
+.img-free-shipping {
+  padding-left: 0.6em;
+  }
 
 .prod-name {
   @include set-grid-area(prod-name);
   text-align: left;
-  border: 1px solid blue;
+  font-size: 18px;
 }
 
 .prod-lt-loc {
   @include set-grid-area(prod-lt-loc);
   text-align: center;
-  border: 1px solid blue;
+  font-size: 12px;
 }
 
 @include respond-to(mobile-portrait) {
-    .container-prods-list {
-      @include grid-columns(1fr);
-      @include grid-rows(50% 34% 16%);
-        grid-template-areas: "prod-lt-img" 
-                            "prod-lt-descr" 
-                            "prod-lt-loc";
-    }
-
-    .prod-lt-descr-wrapper{
-      padding-left: 0px;
-    }
-
+  .container-prods-list {
+    @include grid-columns(1fr);
+    @include grid-rows(70% 39% 7%);
+    grid-template-areas:
+      "prod-lt-img"
+      "prod-lt-descr"
+      "prod-lt-loc";
   }
-  
+
+  .prod-lt-descr-wrapper {
+    padding-left: 0px;
+  }
+}

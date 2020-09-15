@@ -15,8 +15,7 @@ function productsApi(app) {
         req.query.q
       );
 
-      const message =
-        productsByParam.items.length <= 0
+      const message = productsByParam.items
           ? "there are no products with that parameter"
           : "products listed";
 

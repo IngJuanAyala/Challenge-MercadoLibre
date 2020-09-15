@@ -6,6 +6,9 @@ import "../styles/sass/01_page/_productDetail.scss";
 const ProductDetail = (props) => {
   debugger;
   const { product } = props;
+
+  let condition = product.condition === "new" ? "Nuevo" : "Usado";
+
   return (
     <>
       <section className="container-prod-detail">
@@ -16,7 +19,9 @@ const ProductDetail = (props) => {
             </div>
             <div className="info-product">
               <section className="wrapper-info-product">
-                <div className="info-sales">{product.sold_quantity}</div>
+                <div className="info-sales">
+                  {condition} - {product.sold_quantity} vendidos
+                </div>
                 <div className="product-title">{product.title}</div>
                 <div className="product-total">{product.price.amount}</div>
                 <div className="btn-buy">#btn-buy</div>
@@ -24,7 +29,11 @@ const ProductDetail = (props) => {
             </div>
           </section>
         </div>
-        <div className="detail-descr-prod">{product.description}</div>
+        <div className="detail-descr-prod">
+        <div className="descr-prod-title">Descripción del producto</div>
+      
+        {product.description}
+        </div>
       </section>
     </>
   );

@@ -2,6 +2,9 @@
 @import "../00_base/_mixins.scss";
 @import "../00_base/_functions.scss";
 @import "../00_base/_colors.scss";
+@import "../00_base/_typography.scss";
+@import "../00_base/_root.scss";
+
 
 .container-meli {
   @extend %display-grid;
@@ -15,6 +18,7 @@
     "product-info-container"
     "footer";
   background-color: $meli-gray-100;
+  font-family: $roboto-font;
 }
 
 // .item {
@@ -25,7 +29,6 @@
 .search-box {
   @include set-grid-area(search-box);
   text-align: center;
-//   border: 1px solid blue;
   padding: 6px;
   background-color: $meli-yellow-color;
 }
@@ -33,23 +36,27 @@
 .bread-crumbs {
   @include set-grid-area(bread-crumbs);
   text-align: left;
-  border: 1px solid blue;
+  font-size: 14px;
 }
 
 .product-info-container {
   @include set-grid-area(product-info-container);
   text-align: center;
-  border: 1px solid blue;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding: 0% 10% 4% 10%;
 }
 
 .footer {
   @include set-grid-area(footer);
   text-align: center;
-  border: 1px solid blue;
 }
 
 .padding-6 {
-    padding: 6px;
-} 
+  padding: 6px;
+}
+
+@include respond-to(mobile-portrait) {
+  .product-info-container{
+    padding-left: 0%;
+   padding-right: 0%;
+  }
+}

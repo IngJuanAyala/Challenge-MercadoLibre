@@ -6,7 +6,7 @@ class ProductService {
     //contact Mercado Libre API with query parameter.
     const url_api = `${config.url_search}${param}`;
 
-    return await fetch(url_api)
+    return await fetch(url_api, { method: "GET" })
       .then((response) => response.json())
       .then((resultData) => {
         //Create result variable.
@@ -42,6 +42,7 @@ class ProductService {
               picture: prod.thumbnail,
               condition: prod.condition,
               free_shipping: prod.shipping.free_shipping,
+              location: prod.address.state_name,
             });
           });
         }
@@ -52,7 +53,7 @@ class ProductService {
           lastname: `${config.lastname}`,
         };
 
-        formattedData.categories = categoriesLt.join("/");
+        formattedData.categories = categoriesLt.join(" > ");
         formattedData.items = resultItems;
 
         return formattedData;
@@ -89,11 +90,12 @@ class ProductService {
           decimals: 0,
         },
         picture:
-          dataItemResult.pictures.length > 0
+          dataItemResult.pictures && dataItemResult.pictures.length > 0
             ? dataItemResult.pictures[0].secure_url
             : "",
         condition: dataItemResult.condition,
-        free_shipping: dataItemResult.shipping.free_shipping,
+        free_shipping:
+          dataItemResult.shipping && dataItemResult.shipping.free_shipping,
         sold_quantity: dataItemResult.sold_quantity,
       };
     }
@@ -122,6 +124,25 @@ class ProductService {
       descrItemResult.error !== undefined
         ? descrItemResult.message
         : descrItemResult.plain_text;
+
+    //contact Mercado Libre API to get category product.
+    const url_api_categories = `${config.url_categories}/${dataItemResult.category_id}`;
+
+    //Fetch Api.
+    let categoryResult = await fetch(url_api_categories)
+      .then((response) => response.json())
+      .then((resultData) => {
+        return resultData;
+      })
+      .catch((err) => {
+        console.log("Error --> " + err);
+      });
+
+    //if we haven't error, set category response.
+    formattedData.item.category =
+      categoryResult.error !== undefined
+        ? categoryResult.message
+        : categoryResult.name;
 
     return formattedData;
   }
