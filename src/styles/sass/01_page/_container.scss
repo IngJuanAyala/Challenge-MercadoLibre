@@ -5,7 +5,6 @@
 @import "../00_base/_typography.scss";
 @import "../00_base/_root.scss";
 
-
 .container-meli {
   @extend %display-grid;
   @include grid-columns(1fr);
@@ -55,8 +54,14 @@
 }
 
 @include respond-to(mobile-portrait) {
-  .product-info-container{
+  .product-info-container {
     padding-left: 0%;
-   padding-right: 0%;
+    padding-right: 0%;
+  }
+}
+
+@include respond-to(handhelds) {
+.product-info-container{
+  padding: 0%;
   }
 }

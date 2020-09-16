@@ -59,7 +59,7 @@
 
 .img-free-shipping {
   padding-left: 0.6em;
-  }
+}
 
 .prod-name {
   @include set-grid-area(prod-name);
@@ -76,14 +76,21 @@
 @include respond-to(mobile-portrait) {
   .container-prods-list {
     @include grid-columns(1fr);
-    @include grid-rows(70% 39% 7%);
+    @include grid-rows(70% 20% 7%);
     grid-template-areas:
       "prod-lt-img"
       "prod-lt-descr"
       "prod-lt-loc";
+    padding-top: 40px;
   }
 
   .prod-lt-descr-wrapper {
     padding-left: 0px;
+  }
+}
+
+@include respond-to(handhelds) {
+  .container-prods-list {
+    grid-template-columns: 30% 60% 0%;
   }
 }

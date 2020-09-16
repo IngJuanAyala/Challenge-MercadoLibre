@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import CurrencyFormat from "react-currency-format";
 
 import "../styles/sass/01_page/_productDetail.scss";
 
@@ -8,6 +9,7 @@ const ProductDetail = (props) => {
   const { product } = props;
 
   let condition = product.condition === "new" ? "Nuevo" : "Usado";
+  let decimals = product.price.decimals === 0 ? "00" : product.price.decimals;
 
   return (
     <>
@@ -23,16 +25,26 @@ const ProductDetail = (props) => {
                   {condition} - {product.sold_quantity} vendidos
                 </div>
                 <div className="product-title">{product.title}</div>
-                <div className="product-total">{product.price.amount}</div>
+                <div className="product-total">
+                  {product.price && product.price.amount && (
+                    <CurrencyFormat
+                      value={product.price.amount}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"$"}
+                    />
+                  )}
+                  <sup>{decimals}</sup>
+                </div>
                 <div className="btn-buy">#btn-buy</div>
               </section>
             </div>
           </section>
         </div>
         <div className="detail-descr-prod">
-        <div className="descr-prod-title">Descripción del producto</div>
-      
-        {product.description}
+          <div className="descr-prod-title">Descripción del producto</div>
+
+          {product.description}
         </div>
       </section>
     </>

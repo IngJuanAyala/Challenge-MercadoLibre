@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import CurrencyFormat from "react-currency-format";
 import { fetchProductsById } from "../redux/actions/productsActions";
 
 import "../styles/sass/01_page/_resultSearch.scss";
@@ -27,23 +28,28 @@ const ResultSearch = (props) => {
         <div className="prod-lt-descr">
           <section className="prod-lt-descr-wrapper">
             <div className="prod-price">
-              ${product.price && product.price.amount } 
-              
-               { product.free_shipping && 
-                <img src="../src/assets/ic_shipping.png"
-                    alt="free shipping"
-                    className="img-free-shipping" 
-                    width="18"
-                    heght="18"
-                  /> }
-
+              {product.price && product.price.amount && (
+                <CurrencyFormat
+                  value={product.price.amount}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                />
+              )}
+              {product.free_shipping && (
+                <img
+                  src="../src/assets/ic_shipping.png"
+                  alt="free shipping"
+                  className="img-free-shipping"
+                  width="18"
+                  heght="18"
+                />
+              )}
             </div>
-          
-            
-         
+
             <div className="prod-name">
               <a href="#" onClick={() => handleProductDetail(product.id)}>
-                {product.title} 
+                {product.title}
               </a>
             </div>
           </section>

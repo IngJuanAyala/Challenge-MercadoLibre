@@ -3,68 +3,66 @@
 @import "../00_base/_colors.scss";
 @import "../00_base/_root.scss";
 
-
 .container-prod-detail {
-    @extend %display-grid;
-    @include grid-columns(1fr);
-    @include grid-rows(auto auto);
-    grid-column-gap: 2px;
-    height: auto;
-    grid-template-areas:
-    "image-detail" 
+  @extend %display-grid;
+  @include grid-columns(1fr);
+  @include grid-rows(auto auto);
+  grid-column-gap: 2px;
+  height: auto;
+  grid-template-areas:
+    "image-detail"
     "detail-descr-prod";
-     background-color: $meli-gray-100;
+  background-color: $meli-gray-100;
 }
 
 .image-detail {
-    @include set-grid-area(image-detail); 
-    text-align: center;
-    padding: 8px;
-    background-color: #FFF;
+  @include set-grid-area(image-detail);
+  text-align: center;
+  padding: 8px;
+  background-color: #fff;
 }
 .detail-descr-prod {
-    @include set-grid-area(detail-descr-prod); 
-    text-align: left;
-    background-color: #FFF;
-    padding: 20px 48px 32px 32px;
-    color: #949E9F;
+  @include set-grid-area(detail-descr-prod);
+  text-align: left;
+  background-color: #fff;
+  padding: 20px 48px 32px 32px;
+  color: #949e9f;
 }
 
-.descr-prod-title{
-    font-size: 28px;
-    padding-bottom: 32px;
-    color: black;
+.descr-prod-title {
+  font-size: 28px;
+  padding-bottom: 32px;
+  color: black;
 }
 
 .wrapper-image-detail {
-    @extend %display-grid;
-    @include grid-columns(70% 30%);
-    @include grid-rows(1fr);
-    grid-column-gap: 2px;
-    height: auto;
-    grid-template-areas:
-    "image-product info-product";  
+  @extend %display-grid;
+  @include grid-columns(70% 30%);
+  @include grid-rows(1fr);
+  grid-column-gap: 2px;
+  height: auto;
+  grid-template-areas: "image-product info-product";
 }
 
 .image-product {
-    @include set-grid-area(image-product); 
-    text-align: center;
-    padding: 8px;
+  @include set-grid-area(image-product);
+  text-align: center;
+  padding: 8px;
 }
 
 .info-product {
-    @include set-grid-area(info-product); 
-    text-align: center;
-    padding: 8px;
+  @include set-grid-area(info-product);
+  text-align: center;
+  padding: 8px;
 }
 
 .wrapper-info-product {
-    @extend %display-grid;
-    @include grid-columns(1fr);
-    @include grid-rows(32px 18px 16px auto 32px 50px 32px 40px);
-    grid-column-gap: 2px;
-    height: auto;
-    grid-template-areas:
+  @extend %display-grid;
+  @include grid-columns(1fr);
+  @include grid-rows(32px 18px 16px auto 32px 50px 32px 40px);
+  grid-column-gap: 2px;
+  height: auto;
+  grid-template-areas:
     "."
     "info-sales"
     "."
@@ -73,55 +71,48 @@
     "product-total"
     "."
     "btn-buy";
-     background-color: #a9dfbf;
-     padding-right: 32px;
+  background-color: #a9dfbf;
+  padding-right: 32px;
 }
 
 .info-sales {
-    @include set-grid-area(info-sales); 
-    text-align: left;
-    font-size: 14px;
+  @include set-grid-area(info-sales);
+  text-align: left;
+  font-size: 14px;
 }
 
 .product-title {
-    @include set-grid-area(product-title); 
-    text-align: left;
-    font-size: 24px;
-    font-weight: 600;
+  @include set-grid-area(product-title);
+  text-align: left;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .product-total {
-    @include set-grid-area(product-total); 
-    text-align: left;
-    font-size: 46px;
+  @include set-grid-area(product-total);
+  text-align: left;
+  font-size: 46px;
+}
+
+.product-total sup {
+  font-size: 25px;
 }
 
 .btn-buy {
-    @include set-grid-area(btn-buy); 
-    text-align: center;
+  @include set-grid-area(btn-buy);
+  text-align: center;
 }
 
 @include respond-to(mobile-portrait) {
-
-.wrapper-image-detail {
+  .wrapper-image-detail {
     @include grid-columns(1fr);
-    @include grid-rows(63% auto); 
+    @include grid-rows(63% auto);
     grid-template-areas:
-    "image-product" 
-    "info-product";  
+      "image-product"
+      "info-product";
+  }
 
-    }
-
-.wrapper-info-product{
+  .wrapper-info-product {
     padding-right: 0px;
+  }
 }
-
-
-}
-  
-
-
-
-
-
-

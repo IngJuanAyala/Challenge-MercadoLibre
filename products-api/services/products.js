@@ -30,14 +30,17 @@ class ProductService {
 
           //Set array object with formatted information
           items.map((prod) => {
+            //get decimal part from product price.
+            let decimalValue = getDecimalPart(prod.price.toString());
+
             resultItems.push({
               id: prod.id,
               title: prod.title,
               price: {
                 currency: prod.currency_id,
-                amount: prod.price,
+                amount: Number(prod.price.toFixed()),
                 rate: prod.installments.rate,
-                decimals: 0,
+                decimals: Number(decimalValue),
               },
               picture: prod.thumbnail,
               condition: prod.condition,
@@ -81,13 +84,16 @@ class ProductService {
 
     //If get result, set information item.
     if (dataItemResult !== null && dataItemResult !== undefined) {
+      //get decimal part from product price.
+      let decimalValue = getDecimalPart(dataItemResult.price.toString());
+
       formattedData.item = {
         id: dataItemResult.id,
         title: dataItemResult.title,
         price: {
           currency: dataItemResult.currency_id,
-          amount: dataItemResult.price,
-          decimals: 0,
+          amount: Number(dataItemResult.price.toFixed()),
+          decimals: Number(decimalValue),
         },
         picture:
           dataItemResult.pictures && dataItemResult.pictures.length > 0
@@ -146,20 +152,14 @@ class ProductService {
 
     return formattedData;
   }
-
-  async getDescriptionProduct(id) {
-    //contact Mercado Libre API to get product by id.
-    const url_api = `${config.url_item_id}${id}/description`;
-
-    return await fetch(url_api)
-      .then((response) => response.json())
-      .then((resultData) => {
-        return resultData;
-      })
-      .catch((err) => {
-        console.log("Error --> " + err);
-      });
-  }
 }
+
+//Function to get or add decimal part from the product price
+const getDecimalPart = (num) => {
+  return Number(num)
+    .toFixed(2)
+    .replace(/^[^\.]+/, "")
+    .replace(".", "");
+};
 
 module.exports = ProductService;
