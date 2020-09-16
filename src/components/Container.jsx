@@ -16,7 +16,6 @@ const Container = (props) => {
   const { url } = props.match;
   const { search } = props.location;
 
-
   if (props.match.params.search !== undefined) {
     useEffect(() => {
       fetchProductsById(props, props.match.params.search);
@@ -32,7 +31,6 @@ const Container = (props) => {
     }, []);
   }
 
-
   return (
     <>
       <section className="container-meli">
@@ -42,7 +40,11 @@ const Container = (props) => {
 
         <div className="bread-crumbs">
           <div className="padding-6"></div>
-          {props.state.products && props.state.products.breadCrumb}
+          {props.state.products &&
+            props.state.products.breadCrumb &&
+            props.state.products.breadCrumb.map((breadCr) => {
+              return ` > ${breadCr}`;
+            })}
           <div className="padding-6"></div>
         </div>
 

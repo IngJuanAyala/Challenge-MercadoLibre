@@ -18,7 +18,6 @@
 .image-detail {
   @include set-grid-area(image-detail);
   text-align: center;
-  padding: 8px;
   background-color: #fff;
 }
 .detail-descr-prod {
@@ -47,13 +46,11 @@
 .image-product {
   @include set-grid-area(image-product);
   text-align: center;
-  padding: 8px;
 }
 
 .info-product {
   @include set-grid-area(info-product);
   text-align: center;
-  padding: 8px;
 }
 
 .wrapper-info-product {
@@ -71,7 +68,6 @@
     "product-total"
     "."
     "btn-buy";
-  background-color: #a9dfbf;
   padding-right: 32px;
 }
 
@@ -101,6 +97,11 @@
 .btn-buy {
   @include set-grid-area(btn-buy);
   text-align: center;
+  background-color: $meli-blue-color;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 2.5;
 }
 
 @include respond-to(mobile-portrait) {

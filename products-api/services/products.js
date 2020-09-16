@@ -56,7 +56,7 @@ class ProductService {
           lastname: `${config.lastname}`,
         };
 
-        formattedData.categories = categoriesLt.join(" > ");
+        formattedData.categories = categoriesLt.join(",");
         formattedData.items = resultItems;
 
         return formattedData;

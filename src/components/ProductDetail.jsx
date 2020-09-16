@@ -5,7 +5,6 @@ import CurrencyFormat from "react-currency-format";
 import "../styles/sass/01_page/_productDetail.scss";
 
 const ProductDetail = (props) => {
-  debugger;
   const { product } = props;
 
   let condition = product.condition === "new" ? "Nuevo" : "Usado";
@@ -36,7 +35,7 @@ const ProductDetail = (props) => {
                   )}
                   <sup>{decimals}</sup>
                 </div>
-                <div className="btn-buy">#btn-buy</div>
+                <div className="btn-buy">Comprar</div>
               </section>
             </div>
           </section>

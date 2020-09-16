@@ -48,9 +48,9 @@ const ResultSearch = (props) => {
             </div>
 
             <div className="prod-name">
-              <a href="#" onClick={() => handleProductDetail(product.id)}>
+              <div onClick={() => handleProductDetail(product.id)}>
                 {product.title}
-              </a>
+              </div>
             </div>
           </section>
         </div>

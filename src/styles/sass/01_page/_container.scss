@@ -36,6 +36,7 @@
   @include set-grid-area(bread-crumbs);
   text-align: left;
   font-size: 14px;
+  padding-left: 10%;
 }
 
 .product-info-container {
@@ -58,10 +59,18 @@
     padding-left: 0%;
     padding-right: 0%;
   }
+
+  .bread-crumbs {
+    padding-left: 0%;
+  }
 }
 
 @include respond-to(handhelds) {
-.product-info-container{
-  padding: 0%;
+  .product-info-container {
+    padding: 0%;
+  }
+
+  .bread-crumbs {
+    padding-left: 0%;
   }
 }

@@ -16,9 +16,12 @@ const SearchBox = (props) => {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetchProductsByParam(props, form);
+  const handleSearch = () => {
+    fetchProductsByParam(props, form.searchValue);
+  };
+
+  const handleHome = () => {
+    window.location = "/";
   };
 
   const onKeyDown = (e) => {
@@ -35,21 +38,27 @@ const SearchBox = (props) => {
             alt="Logo Meli"
             width="50"
             heght="50"
+            onClick={() => handleHome()}
           />
         </div>
-        {/* <form autoComplete="off" onSubmit={handleSubmit}> */}
-          <div className="item SearchBar">
-            <input
-              name="searchValue"
-              id="searchValue"
-              className="input-search"
-              onKeyDown={onKeyDown}
-              onChange={handleInput}
-            />
-          </div>
-          <div className="btnSearch" type="submit">
-            <img src="../src/assets/ic_Search.png" alt="Logo Meli" />
-          </div>
+
+        <div className="item SearchBar">
+          <input
+            name="searchValue"
+            id="searchValue"
+            placeholder="Nunca dejes de buscar"
+            className="input-search"
+            onKeyDown={onKeyDown}
+            onChange={handleInput}
+          />
+        </div>
+        <div className="btnSearch" type="submit">
+          <img
+            src="../src/assets/ic_Search.png"
+            alt="Logo Meli"
+            onClick={() => handleSearch()}
+          />
+        </div>
         {/* </form> */}
       </section>
     </>

@@ -4,15 +4,13 @@
 @import "../00_base/_root.scss";
 
 .container-searchBox {
-    @extend %display-grid;
-    @include grid-columns(5% 100px 75% 40px 10%);
-    @include grid-rows(1fr);
-    // grid-column-gap: 1px;
-    height: auto;
-    grid-template-areas:
-    ". logoMeli SearchBar btnSearch .";
-    background-color: $meli-yellow-color;
-
+  @extend %display-grid;
+  @include grid-columns(5% 100px 75% 40px 10%);
+  @include grid-rows(1fr);
+  // grid-column-gap: 1px;
+  height: auto;
+  grid-template-areas: ". logoMeli SearchBar btnSearch .";
+  background-color: $meli-yellow-color;
 }
 
 // .item {
@@ -20,76 +18,69 @@
 // }
 
 .logoMeli {
-    @include set-grid-area(logoMeli); 
-    text-align: center;
-    align-self: center;
+  @include set-grid-area(logoMeli);
+  text-align: center;
+  align-self: center;
+  cursor: pointer;
 }
 
 .SearchBar {
-    @include set-grid-area(SearchBar); 
-    text-align: center;
-    background-color: #fff;
-
+  @include set-grid-area(SearchBar);
+  text-align: center;
+  background-color: #fff;
 }
 
 .btnSearch {
-    @include set-grid-area(btnSearch); 
-    text-align: center;
-    padding-top: 0.7em;
-    background-color: $meli-gray-100;
-
+  @include set-grid-area(btnSearch);
+  text-align: center;
+  padding-top: 0.7em;
+  background-color: $meli-gray-100;
+  cursor: pointer;
 }
 
 .input-search {
-    padding: 1%;
-    display: block;
-    border: none;
-    width: 98%;
+  padding: 1%;
+  display: block;
+  border: none;
+  width: 98%;
 }
 
 @include respond-to(mobile-portrait) {
-    .container-searchBox {
-      grid-template-columns: 0% auto 60% auto 0%;
-    }
+  .container-searchBox {
+    grid-template-columns: 0% auto 60% auto 0%;
+  }
 
-    .input-search{
-        height: 90%
-    }
+  .input-search {
+    height: 90%;
+  }
 }
 
 @include respond-to(mobile-landscape) {
-    .input-search{
-        height: 80%
-    }
+  .input-search {
+    height: 80%;
+  }
 }
 
 @include respond-to(handhelds) {
-    .input-search{
-        height: 80%
-    }
+  .input-search {
+    height: 80%;
+  }
 }
 
 @include respond-to(handhelds-landscape) {
-    .input-search{
-        height: 60%
-    }
+  .input-search {
+    height: 60%;
+  }
 }
 
 @include respond-to(smallDesktop) {
-    .input-search{
-        height: 75%
-    }
+  .input-search {
+    height: 75%;
+  }
 }
 
 @include respond-to(smallDesktop) {
-    .largeDesktop{
-        height: 75%
-    }
+  .largeDesktop {
+    height: 75%;
+  }
 }
-
-
-
-
-
-
-  
