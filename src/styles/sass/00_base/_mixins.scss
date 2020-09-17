@@ -1,31 +1,3 @@
-//Specify the different properties to set to titles with opcional parameters
-@mixin title-personalization($color: null, $font-size: null, $font-family: null, $font-weight: null, $font-style: null, $text-align: null) {
-
-    @if $color != null {
-        color: $color;
-    }
-
-    @if $font-size != null {
-        font-size: $font-size;
-    }
-
-    @if $font-family != null {
-        font-family: $font-family;
-    }
-
-    @if $font-weight != null {
-        font-weight: $font-weight;
-    }
-
-    @if $font-style != null {
-        font-style: $font-style;
-    }
-
-    @if $text-align != null {
-        text-align: $text-align;
-    }
-}
-
 
 /// Get and assign the information about the columns and the columns gap
 @mixin grid-columns($columns, $gap: null) {

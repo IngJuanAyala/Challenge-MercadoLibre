@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import {
   fetchProductsById,
   fetchProductsByParam,
@@ -11,8 +11,10 @@ import ResultSearch from "./ResultSearch";
 import Loader from "react-loader-spinner";
 
 import "../styles/sass/01_page/_container.scss";
+// import { useCountRenders } from "../hooks/useCountRenders";
 
 const Container = (props) => {
+  // useCountRenders();
   const { url } = props.match;
   const { search } = props.location;
 
@@ -52,7 +54,7 @@ const Container = (props) => {
           {props.state.products.isFetching ? (
             <div>
               <Loader
-                type="Puff"
+                type="TailSpin"
                 color="#FFE600"
                 height={100}
                 width={100}

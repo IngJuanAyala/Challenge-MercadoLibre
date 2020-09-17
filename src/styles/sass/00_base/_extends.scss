@@ -3,8 +3,8 @@
 //     text-align: center;
 // }
 
-/*mixin to set the display propertie used in css grid*/
+/*extend to set the display propertie used in css grid*/
 %display-grid {
-    display: -ms-grid;
-    display: grid;
+  display: -ms-grid;
+  display: grid;
 }

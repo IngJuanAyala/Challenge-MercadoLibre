@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import CurrencyFormat from "react-currency-format";
+import useSEO from "../hooks/useSEO";
 
 import "../styles/sass/01_page/_productDetail.scss";
 
@@ -9,6 +10,10 @@ const ProductDetail = (props) => {
 
   let condition = product.condition === "new" ? "Nuevo" : "Usado";
   let decimals = product.price.decimals === 0 ? "00" : product.price.decimals;
+
+  useSEO({
+    title: product.category && product.category[0],
+  });
 
   return (
     <>

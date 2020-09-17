@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchProductsByParam } from "../redux/actions/productsActions";
+import useSEO from "../hooks/useSEO";
 
 import "../styles/sass/01_page/_searchBox.scss";
 
 const SearchBox = (props) => {
+
   const [form, setValues] = useState({
     searchValue: "",
   });
@@ -15,6 +17,10 @@ const SearchBox = (props) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  useSEO({
+    title: form.searchValue,
+  });
 
   const handleSearch = () => {
     fetchProductsByParam(props, form.searchValue);
@@ -29,6 +35,7 @@ const SearchBox = (props) => {
       fetchProductsByParam(props, e.target.value);
     }
   };
+
   return (
     <>
       <section className="item container-searchBox">
@@ -59,7 +66,6 @@ const SearchBox = (props) => {
             onClick={() => handleSearch()}
           />
         </div>
-        {/* </form> */}
       </section>
     </>
   );
