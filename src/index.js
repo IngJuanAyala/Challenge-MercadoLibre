@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from "./redux/reducers/index";
+import Favicon from "react-favicon";
 import App from "./routes/App";
 
 const composeEnhancers = composeWithDevTools({
@@ -28,6 +29,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
+    <Favicon url="../src/assets/favicon.ico" />
     <App />
   </Provider>,
   document.getElementById("app")

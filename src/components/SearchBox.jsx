@@ -6,7 +6,6 @@ import useSEO from "../hooks/useSEO";
 import "../styles/sass/01_page/_searchBox.scss";
 
 const SearchBox = (props) => {
-
   const [form, setValues] = useState({
     searchValue: "",
   });
@@ -18,6 +17,7 @@ const SearchBox = (props) => {
     });
   };
 
+  //Set search value as Metadata title
   useSEO({
     title: form.searchValue,
   });
@@ -30,6 +30,7 @@ const SearchBox = (props) => {
     window.location = "/";
   };
 
+  //Enter key down
   const onKeyDown = (e) => {
     if (e.keyCode == 13) {
       fetchProductsByParam(props, e.target.value);

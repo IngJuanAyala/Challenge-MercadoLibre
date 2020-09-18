@@ -16,8 +16,8 @@ function productsApi(app) {
       );
 
       const message = productsByParam.items
-          ? "there are no products with that parameter"
-          : "products listed";
+        ? "there are no products with that parameter"
+        : "products listed";
 
       res.status(200).json({
         results: productsByParam,
@@ -43,25 +43,25 @@ function productsApi(app) {
     }
   });
 
+  //Get provider by id
+  router.get("/items/:id", async function (req, res, next) {
+    const { id } = req.params;
 
-   //Get provider by id
-   router.get('/items/:id', async function(req, res, next) {
-      const { id } = req.params;
+    try {
+      //Get product by id
+      const product = await productService.getProductById(id);
 
-      try {
-      
-       const product = await productService.getProductById(id);
-
-        res.status(200).json({
-          data: product,
-          message: product.item.id !== undefined ? "product retrieved" : 'Item not found',
-        });
-
-      } catch (err) {
-        next(err);
-      }
+      res.status(200).json({
+        data: product,
+        message:
+          product.item.id !== undefined
+            ? "product retrieved"
+            : "Item not found",
+      });
+    } catch (err) {
+      next(err);
     }
-  );
+  });
 }
 
 module.exports = productsApi;

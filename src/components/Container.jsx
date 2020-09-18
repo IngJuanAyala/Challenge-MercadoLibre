@@ -7,6 +7,7 @@ import {
 
 import SearchBox from "./SearchBox";
 import ProductDetail from "./ProductDetail";
+import BreadCrumb from "./BreadCrumb";
 import ResultSearch from "./ResultSearch";
 import Loader from "react-loader-spinner";
 
@@ -14,9 +15,8 @@ import "../styles/sass/01_page/_container.scss";
 // import { useCountRenders } from "../hooks/useCountRenders";
 
 const Container = (props) => {
+  const params = new URLSearchParams(window.location.search);
   // useCountRenders();
-  const { url } = props.match;
-  const { search } = props.location;
 
   if (props.match.params.search !== undefined) {
     useEffect(() => {
@@ -24,12 +24,9 @@ const Container = (props) => {
     }, []);
   }
 
-  if (url !== "/" && props.match.params.search === undefined) {
-    let searchValue = search.includes("=")
-      ? props.location.search.split("=")
-      : null;
+  if (params.get("search") !== null) {
     useEffect(() => {
-      fetchProductsByParam(props, searchValue[1]);
+      fetchProductsByParam(props, params.get("search"));
     }, []);
   }
 
@@ -41,13 +38,9 @@ const Container = (props) => {
         </div>
 
         <div className="bread-crumbs">
-          <div className="padding-6"></div>
-          {props.state.products &&
-            props.state.products.breadCrumb &&
-            props.state.products.breadCrumb.map((breadCr) => {
-              return ` > ${breadCr}`;
-            })}
-          <div className="padding-6"></div>
+          {props.state.products && props.state.products.breadCrumb && (
+            <BreadCrumb breadCrumbLt={props.state.products.breadCrumb} />
+          )}
         </div>
 
         <div className="product-info-container">
